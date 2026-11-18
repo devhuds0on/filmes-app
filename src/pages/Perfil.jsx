@@ -21,6 +21,7 @@ export default function Perfil() {
     formState: { errors, isSubmitting, isDirty },
   } = useForm({
     resolver: zodResolver(perfilSchema),
+    mode: "onTouched",
     defaultValues: { nome: usuario?.user_metadata?.nome ?? "" },
   });
 
@@ -56,7 +57,7 @@ export default function Perfil() {
       <p><strong>Conta criada em:</strong> {new Date(usuario.created_at).toLocaleDateString("pt-BR")}</p>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <CampoFormulario id="nome" label="Nome" autoComplete="name"
+        <CampoFormulario id="nome" label="Nome completo" autoComplete="name"
           registro={register("nome")} erro={errors.nome} />
 
         {errors.root?.servidor && (

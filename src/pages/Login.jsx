@@ -10,7 +10,7 @@ export default function Login() {
   const { usuario, entrar } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const destino = location.state?.de || "/perfil";
+  const destino = location.state?.de || "/registros";
 
   const {
     register,
@@ -19,6 +19,7 @@ export default function Login() {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(loginSchema),
+    mode: "onTouched",
     defaultValues: { email: "", senha: "" },
   });
 
@@ -56,7 +57,7 @@ export default function Login() {
         </button>
       </form>
 
-      <p>Não tem conta? <Link to="/cadastro">Cadastre-se</Link></p>
+      <p>Não tem conta? <Link to="/registro">Cadastre-se</Link></p>
     </div>
   );
 }

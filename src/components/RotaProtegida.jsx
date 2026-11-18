@@ -1,6 +1,8 @@
-import { Navigate, useLocation } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
 
+// Pode ser usada envolvendo um componente (children)
+// ou como rota "pai" de várias rotas protegidas (Outlet)
 export default function RotaProtegida({ children }) {
   const { usuario, carregando } = useAuth();
   const location = useLocation();
@@ -12,5 +14,5 @@ export default function RotaProtegida({ children }) {
     return <Navigate to="/login" replace state={{ de: location.pathname }} />;
   }
 
-  return children;
+  return children ?? <Outlet />;
 }

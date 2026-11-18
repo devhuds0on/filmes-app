@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import { supabase } from "../supabaseClient";
+import { traduzirErroBanco } from "../utils/erroSupabase";
 
 export default function FilmeDetalhe() {
   const { id } = useParams();
@@ -16,7 +17,7 @@ export default function FilmeDetalhe() {
         .select("*")
         .eq("id", id)
         .maybeSingle();
-      if (error) setErro(error.message);
+      if (error) setErro(traduzirErroBanco(error));
       else setFilme(data);
       setCarregando(false);
     }

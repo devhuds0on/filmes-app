@@ -19,6 +19,7 @@ export default function Cadastro() {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(cadastroSchema),
+    mode: "onTouched", // valida ao sair do campo e, depois, a cada digitação
     defaultValues: { nome: "", email: "", senha: "", confirmarSenha: "" },
   });
 
@@ -49,7 +50,7 @@ export default function Cadastro() {
       }
 
       if (data.session) {
-        navigate("/perfil", { replace: true });
+        navigate("/registros", { replace: true });
       } else {
         setSucesso("Cadastro feito! Enviamos um link de confirmação para o seu e-mail.");
       }
@@ -58,7 +59,7 @@ export default function Cadastro() {
     }
   }
 
-  if (usuario) return <Navigate to="/perfil" replace />;
+  if (usuario) return <Navigate to="/registros" replace />;
 
   return (
     <div className="formulario-container">
@@ -68,7 +69,7 @@ export default function Cadastro() {
         <p className="mensagem-sucesso" role="status">{sucesso}</p>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <CampoFormulario id="nome" label="Nome" autoComplete="name"
+          <CampoFormulario id="nome" label="Nome completo" autoComplete="name"
             registro={register("nome")} erro={errors.nome} />
           <CampoFormulario id="email" label="E-mail" type="email" autoComplete="email"
             registro={register("email")} erro={errors.email} />

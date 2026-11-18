@@ -6,12 +6,17 @@ export default function Menu() {
 
   return (
     <nav>
-      <Link to="/">Início</Link> | <Link to="/registros">Filmes</Link> |{" "}
+      <Link to="/">Início</Link>
       {usuario ? (
-        <Link to="/perfil">Perfil ({usuario.user_metadata?.nome || usuario.email})</Link>
+        <>
+          {" | "}<Link to="/registros">Filmes</Link>
+          {" | "}<Link to="/registros/novo">Novo filme</Link>
+          {" | "}<Link to="/perfil">Perfil ({usuario.user_metadata?.nome || usuario.email})</Link>
+        </>
       ) : (
         <>
-          <Link to="/login">Entrar</Link> | <Link to="/cadastro">Cadastrar</Link>
+          {" | "}<Link to="/login">Entrar</Link>
+          {" | "}<Link to="/registro">Cadastrar</Link>
         </>
       )}
     </nav>
