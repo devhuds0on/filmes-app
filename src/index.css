@@ -109,3 +109,69 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Formulários de autenticação */
+.formulario-container {
+  max-width: 380px;
+  margin: 32px auto;
+  text-align: left;
+}
+
+.formulario-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo input {
+  padding: 8px 10px;
+  font-size: 16px;
+  border: 1px solid var(--border, #ccc);
+  border-radius: 6px;
+}
+
+.campo input[aria-invalid="true"] {
+  border-color: #d93025;
+}
+
+.erro-campo {
+  color: #d93025;
+  font-size: 14px;
+}
+
+.erro-servidor {
+  color: #d93025;
+  background: #fdecea;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.mensagem-sucesso {
+  color: #1e7d32;
+  background: #e8f5e9;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.formulario-container button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.formulario-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.botao-secundario {
+  width: 100%;
+}
